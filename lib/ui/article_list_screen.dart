@@ -1,3 +1,7 @@
+import 'package:article_finder/bloc/article_list_bloc.dart';
+import 'package:article_finder/bloc/block_provider.dart';
+import 'package:article_finder/data/article.dart';
+import 'package:article_finder/ui/article_list_item.dart';
 import 'package:flutter/material.dart';
 
 class ArticleListScreen extends StatelessWidget {
@@ -5,6 +9,8 @@ class ArticleListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<ArticleListBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Article"),
@@ -16,16 +22,45 @@ class ArticleListScreen extends StatelessWidget {
             child: TextField(
               decoration: const InputDecoration(
                   border: OutlineInputBorder(), hintText: 'Search ....'),
-              onChanged: (query) {},
+              onChanged: bloc.searchQuery.add,
             ),
           ),
-          Expanded(child: _buildResults())
+          Expanded(child: _buildResults(bloc))
         ],
       ),
     );
   }
 
-  Widget _buildResults() {
-    return const Center(child: Text("No Result"));
+  Widget _buildResults(ArticleListBloc bloc) {
+    return StreamBuilder<List<Article>?>(
+      stream: bloc.articleStream,
+      builder: (context, snapshot) {
+        final results = snapshot.data;
+        if(results == null) {
+          return const Center(child: Text("Loading...."));
+        } else if(results.isEmpty) {
+          return const Center(child: Text("No Result"));
+        }
+
+        return _buildSearchResult(results);
+      }
+    );
+  }
+
+  Widget _buildSearchResult(List<Article> results) {
+    return ListView.builder(
+      itemCount: results.length,
+      itemBuilder: (context, index) {
+        final article = results[index];
+
+        return InkWell(
+          onTap: () {},
+          child: Padding (
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: ArticleListItem(article: article),
+          ),
+        );
+      },
+    );
   }
 }

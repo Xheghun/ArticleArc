@@ -1,18 +1,18 @@
 import 'package:article_finder/bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 
-class BlockProvider<T extends Bloc> extends StatefulWidget {
+class BlocProvider<T extends Bloc> extends StatefulWidget {
   final Widget child;
   final T bloc;
 
-  BlockProvider({
+  BlocProvider({
     Key? key,
     required this.bloc,
     required this.child
   }) : super(key: key);
 
   static T of<T extends Bloc>(BuildContext context) {
-    final BlockProvider<T> provider = context.findAncestorWidgetOfExactType()!;
+    final BlocProvider<T> provider = context.findAncestorWidgetOfExactType()!;
 
     return provider.bloc;
   }
@@ -21,7 +21,7 @@ class BlockProvider<T extends Bloc> extends StatefulWidget {
   State createState() => _BlocProviderState();
 }
 
-class _BlocProviderState extends State<BlockProvider> {
+class _BlocProviderState extends State<BlocProvider> {
   @override
   Widget build(BuildContext context) => widget.child;
 
