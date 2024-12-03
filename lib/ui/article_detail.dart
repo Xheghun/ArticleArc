@@ -37,13 +37,13 @@ class ArticleDetail extends StatelessWidget {
                   children: [
                     Text(
                       article.attributes?.name ?? '',
-                      style: textTheme.subtitle1,
+                      style: textTheme.labelSmall,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4),
                       child: Text(
                         article.subscriptionType,
-                        style: textTheme.subtitle2,
+                        style: textTheme.labelSmall,
                       ),
                     ),
                     if (article.formattedReleaseDate != null)
@@ -51,7 +51,7 @@ class ArticleDetail extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(vertical: 4),
                         child: Text(
                           article.formattedReleaseDate!,
-                          style: textTheme.subtitle2,
+                          style: textTheme.labelSmall,
                         ),
                       ),
                   ],
@@ -65,7 +65,7 @@ class ArticleDetail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
             child: Text(
               article.attributes!.description!,
-              style: textTheme.subtitle1,
+              style: textTheme.labelSmall,
             ),
           ),
         if (article.attributes?.contributor_string != null)
@@ -73,7 +73,7 @@ class ArticleDetail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
             child: Text(
               article.attributes!.contributor_string!,
-              style: textTheme.subtitle1,
+              style: textTheme.labelSmall,
             ),
           ),
         if (article.attributes?.technology_triple_string != null)
@@ -81,7 +81,7 @@ class ArticleDetail extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, top: 32),
             child: Text(
               article.attributes!.technology_triple_string!,
-              style: textTheme.subtitle2,
+              style: textTheme.labelSmall,
             ),
           )
       ],

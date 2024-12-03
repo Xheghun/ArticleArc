@@ -29,7 +29,7 @@ class ArticleListItem extends StatelessWidget {
                 Expanded(
                   child: Text(
                     article.attributes?.name ?? '',
-                    style: textTheme.subtitle1,
+                    style: textTheme.labelSmall,
                   ),
                 ),
                 if (article.attributes?.card_artwork_url != null) ...[
@@ -47,13 +47,13 @@ class ArticleListItem extends StatelessWidget {
             ),
             Text(
               article.subscriptionType,
-              style: textTheme.bodyText2,
+              style: textTheme.bodyMedium,
             ),
             const SizedBox(height: 16),
             if (article.attributes?.description != null)
               Text(
                 article.attributes!.description!,
-                style: textTheme.bodyText2,
+                style: textTheme.bodyMedium,
               ),
             buildDates(context, article.formattedReleaseDate, article.formattedDurationInMinutes),
           ],
@@ -77,7 +77,7 @@ class ArticleListItem extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return Text(
       text,
-      style: textTheme.bodyText2,
+      style: textTheme.bodyMedium,
     );
   }
 }
