@@ -14,9 +14,12 @@ class ArticleDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Article Detail"),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: _buildContent(bloc),
+      body: RefreshIndicator(
+        onRefresh: bloc.refresh,
+        child: Container(
+          alignment: Alignment.center,
+          child: _buildContent(bloc),
+        ),
       ),
     );
   }

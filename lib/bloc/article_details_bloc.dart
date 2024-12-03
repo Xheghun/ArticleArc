@@ -22,6 +22,12 @@ class ArticleDetailsBloc implements Bloc {
         .asBroadcastStream();
   }
 
+  Future refresh() {
+    final future = articleStream.first;
+    _refreshController.sink.add({});
+    return future;
+  }
+
   @override
   void dispose() {
     _refreshController.close();
