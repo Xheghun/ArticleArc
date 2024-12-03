@@ -1,14 +1,15 @@
 
 import 'package:article_finder/ui/app_colors.dart';
+import 'package:article_finder/ui/article_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const ArticleFinder());
+  runApp(const ArticleArc());
 }
 
-class ArticleFinder extends StatelessWidget {
-  const ArticleFinder({Key? key}) : super(key: key);
+class ArticleArc extends StatelessWidget {
+  const ArticleArc({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class ArticleFinder extends StatelessWidget {
     );
     return MaterialApp(
       title: 'Article Arc',
-      home: Container(),
+      home: ArticleListScreen(),
       theme: ThemeData(
         primarySwatch: AppColors.black,
         primaryColor: AppColors.black,
@@ -31,7 +32,6 @@ class ArticleFinder extends StatelessWidget {
           headlineLarge: w700BitterFont,
         ),
         textTheme: TextTheme(
-
           labelSmall: w700BitterFont.apply(color: AppColors.black),
             headlineLarge: w700BitterFont.apply(color: AppColors.black),
           bodyMedium: TextStyle(color: AppColors.black),
